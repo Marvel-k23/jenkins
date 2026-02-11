@@ -20,6 +20,8 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 echo 'Deploying Container...'
+                sh 'docker stop job-12'
+                sh 'docker rm job-12'
                 sh 'docker run -d -p 80:80 --name job-12 job-12'
             }
         }
