@@ -6,7 +6,7 @@ pipeline {
         stage('Source Code') {
             steps {
                 echo 'Cloning...'
-                git branch: 'main', url: 'https://github.com/Marvel-k23/jenkins.git'
+                git branch: 'main', url: 'https://github.com/sowmiya7006/jenkins.git'
             }
         }
 
@@ -20,9 +20,10 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 echo 'Deploying Container...'
-                sh 'docker stop job-12'
-                sh 'docker rm job-12'
-                sh 'docker run job-12'
+                sh 'docker stop job-12 || true'
+                sh 'docker rm job-12 || true'
+                sh 'docker run -d --name job-12 job-12'
+                
             }
         }
     }
